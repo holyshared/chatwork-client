@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({ type: 'application/*+json' }));
 
 app.get('/callback', (req, res, next) => {
-  console.log(res.params.code);
+  console.log(req.params.code);
 });
 
 app.listen(process.env.PORT || 3000);
