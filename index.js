@@ -18,4 +18,10 @@ app.get('/callback', (req, res, next) => {
   res.status(200).end('Ok');
 });
 
+app.get('/token', (req, res, next) => {
+  console.log('GET /token');
+  console.log(req.body);
+  res.status(200).end('Ok');
+});
+
 app.listen(process.env.PORT || 3000);
