@@ -8,11 +8,13 @@ app.use(bodyParser.json({ type: 'application/*+json' }));
 
 app.get('/', (req, res, next) => {
   console.log('GET /');
+  res.status(200).end('Ok');
 });
 
 app.get('/callback', (req, res, next) => {
   console.log('GET /callback');
   console.log(req.params.code);
+  res.status(200).end('Ok');
 });
 
 app.listen(process.env.PORT || 3000);
