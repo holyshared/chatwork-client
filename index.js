@@ -13,6 +13,7 @@ app.get('/', (req, res, next) => {
 
 app.get('/callback', (req, res, next) => {
   console.log('GET /callback');
+  console.log(req.body.code);
   console.log(req.params.code);
   res.status(200).end('Ok');
 });
