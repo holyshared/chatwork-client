@@ -35,7 +35,7 @@ app.get('/callback', (req, res, next) => {
       "Authorization": `Basic ${credential}`,
     }
   });
-  const payload = querystring({
+  const payload = querystring.stringify({
     grant_type: 'authorization_code',
     code
   });
