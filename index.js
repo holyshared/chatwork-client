@@ -44,6 +44,7 @@ app.get('/callback', (req, res, next) => {
     res.status(200).end('Ok');
   })
   .catch(function (error) {
+    console.log(error.message);
     res.status(503).end('Oops!!');
   });
 });
