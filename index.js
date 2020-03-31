@@ -20,12 +20,12 @@ app.get('/callback', (req, res, next) => {
   console.log(req.body);
   console.log(req.params);
 
-  const code = req.body.code || req.params.code;
+  const code = req.query.code || req.body.code || req.params.code;
 
   const CLIENT_ID = process.env.CLIENT_ID;
   const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
-  const buff = new Buffer(`${CLIENT_ID}:${CLIENT_SECRET}`);
+  const buff = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`);
   const credential = buff.toString('base64');
 
   const instance = axios.create({
