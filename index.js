@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const querystring = require('querystring');
 
 const app = express();
 
@@ -30,15 +31,15 @@ app.get('/callback', (req, res, next) => {
 
   const instance = axios.create({
     headers: {
-      "Content-Type":"application/x-www-form-urlencoded",
+      "Content-Type": "application/x-www-form-urlencoded",
       "Authorization": `Basic ${credential}`,
     }
   });
-
-  axios.post('https://oauth.chatwork.com/token', {
+  const payload = querystring({
     grant_type: 'authorization_code',
     code
-  })
+  });
+  axios.post('https://oauth.chatwork.com/token', payload)
   .then(function (res) {
     console.log(res.data);
     res.status(200).end('Ok');
